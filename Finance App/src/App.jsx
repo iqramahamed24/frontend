@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import BudgetTable from './Pages/BudgetTable';
+import BudgetForm from './Pages/BudgetForm';
+import SearchBar from './Pages/FilterBudget';
+import NavBar from './Pages/NavBar';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [budgets, setBudgets] = useState([]);
+  const [filteredBudgets, setFilteredBudgets] = useState([]);
+
+  const handleAddBudget = (newBudget) => {
+    setBudgets([...budgets, newBudget]);
+    setFilteredBudgets([...filteredBudgets, newBudget]); 
+  };
+
+  const handleSearch = (searchTerm) => {
+    const filtered = budgets.filter(budget =>
+      budget.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredBudgets(filtered);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <NavBar />
+      <div className="budget-form">
+        <BudgetForm onSubmit={handleAddBudget} budgets={budgets} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="search-bar">
+        <SearchBar onSearch={handleSearch} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <div className="transaction-table">
+        <BudgetTable budgets={filteredBudgets} />
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;
+
+
