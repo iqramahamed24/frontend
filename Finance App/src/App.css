@@ -1,50 +1,67 @@
-.expenses-container {
+body {
+  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-t6endfGYIy6Gpzrg-4Tp4fkruAd8E0BHmQ&s); */
+  background-size: cover;
+  background-position: center;
+  margin: 0;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.expenses-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 10px;
+  background: #175088;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 h1 {
-  color: #333;
+  font-size: 24px;
   margin-bottom: 20px;
+  color: white;
 }
 
 .total-expense {
-  font-size: 1.5rem;
+  font-size: 20px;
   margin-bottom: 20px;
+  color: white;
 }
 
 .expense-form {
-  display: flex;
+  display: flex-box;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
+  justify-content: center;
+  padding-bottom: 90%;
+  margin-bottom: 20px;
+
 }
 
 .expense-form input,
 .expense-form select {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
-.add-expense-button {
-  padding: 10px 20px;
-  background-color: #ff6b6b;
-  color: white;
+.expense-form button {
+  padding: 10px;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
+  background: #ff6f61;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease;
 }
 
-.add-expense-button:hover {
-  background-color: #ff4b4b;
+.expense-form button:hover {
+  background: #ff5a4c;
 }
