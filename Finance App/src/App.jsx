@@ -1,14 +1,14 @@
 import Expenses from "./Components/pages/Expenses";
 import { useState } from "react";
-// import './App.css';
-import './Components/pages/Expenses.css'
-import { Button } from 'react-bootstrap';
+import ExpensesTable from "./Components/pages/ExpensesTable";
 
 
 function App() {
   return (
     <div>
       <Expenses />
+      <ExpensesTable />
+      
     </div>
   );
 }
