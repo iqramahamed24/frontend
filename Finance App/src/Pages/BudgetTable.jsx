@@ -1,8 +1,11 @@
 import React from 'react';
+import './Budget.css'
+
 
 const BudgetTable = ({ budgets }) => {
   return (
-    <table>
+    <div className='budget-table container'>
+    <table className='budget-table'>
       <thead>
         <tr>
           <th>Date</th>
@@ -20,6 +23,7 @@ const BudgetTable = ({ budgets }) => {
         ))}
       </tbody>
     </table>
+    </div>
   );
 };
 

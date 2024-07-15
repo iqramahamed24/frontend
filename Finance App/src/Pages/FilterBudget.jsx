@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Budget.css'
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="search-bar">
+    <div className="search-container">
       <input
         type="text"
         placeholder="Search a specific budget"

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import BudgetTable from './Pages/BudgetTable';
-import BudgetForm from './Pages/BudgetForm';
-import SearchBar from './Pages/FilterBudget';
-import NavBar from './Pages/NavBar';
+import BudgetTable from './BudgetTable';
+import BudgetForm from './BudgetForm';
+import SearchBar from './FilterBudget';
+import NavBar from './NavBar';
+import './Budget.css'
 
-const App = () => {
+const Budget = () => {
   const [budgets, setBudgets] = useState([]);
   const [filteredBudgets, setFilteredBudgets] = useState([]);
 
@@ -36,6 +37,6 @@ const App = () => {
   );
 };
 
-export default App;
+export default Budget;
 
 

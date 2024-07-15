@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Budget.css'
 
 const BudgetForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const BudgetForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='budget-form' onSubmit={handleSubmit}>
       <input
         type="date"
         name="date"
