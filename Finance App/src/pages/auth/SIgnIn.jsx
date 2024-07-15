@@ -11,11 +11,11 @@ function SignIn() {
             <Form>
               <Form.Group className="mb-3" controlId="formGroupEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" placeholder="Enter email" required/>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" placeholder="Password" required />
               </Form.Group>
               <NavLink to="/mainpage" className="btn btn-primary">
                 Log in
