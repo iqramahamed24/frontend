@@ -6,6 +6,7 @@ import Income from "./pages/dashboard/income/Income";
 import Budget from "./pages/dashboard/budget/Budget";
 import Expenses from "./pages/dashboard/Expense";
 import LogOut from "./Components/LogOut";
+import SignUp from "./pages/auth/Signup";
 import './index.css'
 
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/budget" element={<Budget />} />
       <Route path="/income" element={<Income />} />
       <Route path="/logout" element={<LogOut />} />
+      <Route path="/signup" element={<SignUp/>}/>
     </Routes>
   </Router>
     
