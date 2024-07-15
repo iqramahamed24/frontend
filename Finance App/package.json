@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,17 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@coreui/icons": "^3.0.1",
-    "@coreui/icons-react": "^2.2.1",
-    "@coreui/react": "^5.1.0",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.16.1",
-    "@mui/material": "^5.16.1",
-    "bootstrap": "^5.3.3",
-    "chart.js": "^3.9.1",
-    "react": "^18.3.1",
-    "react-chartjs-2": "^4.3.1",
+
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
