@@ -5,8 +5,8 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div>
-            <h2>About us</h2>
-            <p>Our Finance Tracker application is designed to help users manage their finances efficiently. The application provides features for; tracking expenses, and incomes, setting budgets and achieving financial goals. This web-based application will leverage modern technologies including React for the front end and Flask for the back end, with JWT-based authentication to ensure secure access to user data.</p>
+            <h2>About us:</h2>
+            <p>Our Finance Tracker application is designed to help users manage their finances efficiently. The application provides features for; tracking expenses, and incomes, setting budgets and achieving financial goals.</p>
             </div>
             <div>
             <h2>Contact us</h2>
