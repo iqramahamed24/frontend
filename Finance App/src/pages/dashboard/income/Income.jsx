@@ -7,6 +7,10 @@ import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { BASE_URL } from "../../../data/data";
 
+
+
+
+
 const Income = () => {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
@@ -15,19 +19,19 @@ const Income = () => {
     date: "",
   });
 
+  const [incomeData, setIncomeData] = useState([
+    
+ 
+  ]);
+
   useEffect(() => {
-    fetch(`${BASE_URL}/expenses`)
+    fetch(`${BASE_URL}/incomes`)
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => setIncomeData(data))
       .catch((error) => console.log(error));
   }, []);
 
-  const [incomeData, setIncomeData] = useState([
-    { id: 1, source: "Salary", amount: 50000, date: "2024-07-01" },
-    { id: 2, source: "Freelance", amount: 3000, date: "2024-07-03" },
-    { id: 3, source: "Investments", amount: 10000, date: "2024-07-05" },
-  ]);
-
+ 
   const chartRef = useRef(null);
   const [pieChartInstance, setPieChartInstance] = useState(null);
 
