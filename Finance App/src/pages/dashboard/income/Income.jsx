@@ -4,6 +4,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import { BASE_URL } from "../../../data/data";
 
 const Income = () => {
   const [showModal, setShowModal] = useState(false);
@@ -12,6 +13,10 @@ const Income = () => {
     amount: "",
     date: "",
   });
+
+useEffect(()=> {
+  fetch (`${BASE_URL}/expenses`).then((res) => res.json ()).then((data) => console.log(data) ).catch((error) => console.log(error))
+}, [])
 
   const [incomeData, setIncomeData] = useState([
     { id: 1, source: "Salary", amount: 50000, date: "2024-07-01" },
@@ -22,38 +27,6 @@ const Income = () => {
   const chartRef = useRef(null);
   const [pieChartInstance, setPieChartInstance] = useState(null);
 
-  useEffect(() => {
-    if (chartRef.current) {
-      const ctx = chartRef.current.getContext("2d");
-      const newChartInstance = new Chart(ctx, {
-        type: "pie",
-        data: {
-          labels: incomeData.map((income) => income.source),
-          datasets: [
-            {
-              label: "Income Sources",
-              data: incomeData.map((income) => income.amount),
-              backgroundColor: ["#1d528b", "#3f85c7", "#7c97b1"],
-              hoverOffset: 4,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            tooltip: {
-              callbacks: {
-                label: (tooltipItem) =>
-                  `${tooltipItem.label}: $${tooltipItem.raw.toLocaleString()}`,
-              },
-            },
-          },
-        },
-      });
-
-      setPieChartInstance(newChartInstance);
-    }
-  }, [incomeData]);
 
   const handleAddNewIncome = () => {
     setShowModal(true);
