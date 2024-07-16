@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Income.css";
 import { Button, Form, Modal } from "react-bootstrap";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { Pie } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Pie } from "react-chartjs-2";
+import Chart from "chart.js/auto";
 import { BASE_URL } from "../../../data/data";
 
 const Income = () => {
@@ -14,9 +15,12 @@ const Income = () => {
     date: "",
   });
 
-useEffect(()=> {
-  fetch (`${BASE_URL}/expenses`).then((res) => res.json ()).then((data) => console.log(data) ).catch((error) => console.log(error))
-}, [])
+  useEffect(() => {
+    fetch(`${BASE_URL}/expenses`)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  }, []);
 
   const [incomeData, setIncomeData] = useState([
     { id: 1, source: "Salary", amount: 50000, date: "2024-07-01" },
@@ -26,7 +30,6 @@ useEffect(()=> {
 
   const chartRef = useRef(null);
   const [pieChartInstance, setPieChartInstance] = useState(null);
-
 
   const handleAddNewIncome = () => {
     setShowModal(true);
@@ -57,6 +60,10 @@ useEffect(()=> {
     setShowModal(false);
   };
 
+  const handleDelete =(id) => {
+    setIncomeData((prevIncomeData) => [...prevIncomeData.filter((income) => income.id !== id)])
+  };
+
   return (
     <div>
       <h2 className="mb-4">Income Details</h2>
@@ -80,6 +87,11 @@ useEffect(()=> {
                 <td>{income.source}</td>
                 <td>{income.amount}</td>
                 <td>{income.date}</td>
+                <td>
+                  <Button variant="danger" onClick={() => handleDelete(inccome.id)}>
+                   Delete <DeleteIcon/>
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>

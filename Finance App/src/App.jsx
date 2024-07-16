@@ -7,6 +7,7 @@ import Budget from "./pages/dashboard/budget/Budget";
 import Expenses from "./pages/dashboard/expenses/Expenses";
 import LogOut from "./Components/LogOut";
 import SignUp from "./pages/auth/Signup";
+import Footer from "./pages/dashboard/Footer/Footer";
 import './index.css'
 
 
@@ -14,6 +15,8 @@ import './index.css'
 function App() {
 
   return (
+    <>
+    
     <Router>
     <Routes>
       <Route path="/" element={<Home />} />
@@ -25,6 +28,7 @@ function App() {
       <Route path="/signup" element={<SignUp/>}/>
     </Routes>
   </Router>
+  </>
     
    
   )
