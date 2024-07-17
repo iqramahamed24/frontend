@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import ExpensesTable from './ExpensesTable';
 
 const Expenses = () => {
-    const [expenseTitle, setExpenseTitle] = useState('');
     const [expenseAmount, setExpenseAmount] = useState('');
     const [expenseDate, setExpenseDate] = useState('');
     const [expenseOption, setExpenseOption] = useState('');
-    const [expenseReference, setExpenseReference] = useState('');
+    const [expenseDescription, setExpenseDescription] = useState('');
     const [totalExpense, setTotalExpense] = useState(0);
     const [expenses, setExpenses] = useState([]);
 
@@ -15,19 +14,17 @@ const Expenses = () => {
         if (!isNaN(amount)) {
             setTotalExpense(totalExpense + amount);
             const newExpense = {
-                title: expenseTitle,
                 amount: expenseAmount,
                 date: expenseDate,
                 category: expenseOption,
-                reference: expenseReference,
+                description: expenseDescription,
             };
             setExpenses([...expenses, newExpense]);
         }
-        setExpenseTitle('');
         setExpenseAmount('');
         setExpenseDate('');
         setExpenseOption('');
-        setExpenseReference('');
+        setExpenseDescription('');
     };
 
     return (
@@ -37,13 +34,6 @@ const Expenses = () => {
                 Total Expense: <span className="text-green-500">${totalExpense.toFixed(2)}</span>
             </div>
             <div className="expense-form grid grid-cols-1 gap-4">
-                <input
-                    type="text"
-                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Expense Title"
-                    value={expenseTitle}
-                    onChange={(e) => setExpenseTitle(e.target.value)}
-                />
                 <input
                     type="number"
                     className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -73,9 +63,9 @@ const Expenses = () => {
                 <input
                     type="text"
                     className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Add A Reference"
-                    value={expenseReference}
-                    onChange={(e) => setExpenseReference(e.target.value)}
+                    placeholder="Add A Description"
+                    value={expenseDescription}
+                    onChange={(e) => setExpenseDescription(e.target.value)}
                 />
                 <button
                     className="bg-blue-500 text-white p-3 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
