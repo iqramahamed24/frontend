@@ -1,5 +1,4 @@
 body {
-  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-t6endfGYIy6Gpzrg-4Tp4fkruAd8E0BHmQ&s); */
   background-size: cover;
   background-position: center;
   margin: 0;
@@ -13,7 +12,7 @@ body {
   padding: 10px;
   border-radius: 20px;
   background: #161b1f;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(146, 31, 31, 0.1);
   text-align: center;
 }
 

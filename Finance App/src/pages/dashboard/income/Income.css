@@ -54,14 +54,18 @@ body{
     color: black;
 
 }
-.income-table th, .income-table td{
-    border: 1px solid #dce3eb;
-    padding: 12px;
-    text-align: left;
-}
+.income-table th,
+.income-table td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+} 
+
+
 .income-table th{
     background-color: #1d528b;
     color: white;
+    text-align: left;
 }
 .income-table tr:nth-child(even){
     background-color: #c5baba;
@@ -106,3 +110,5 @@ body{
     font-size: 24px;
     margin-top: 10px;
 }
+
+
