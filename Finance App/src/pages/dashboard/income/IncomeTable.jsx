@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import './Income.css';
-import { BASE_URL } from '../../../data/data'; // Ensure this path is correct
+import { BASE_URL } from '../../../data/data'; 
 
 const IncomeTable = ({ incomeData, setIncomeData }) => {
   const [showModal, setShowModal] = useState(false);
@@ -31,18 +31,18 @@ const IncomeTable = ({ incomeData, setIncomeData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`${BASE_URL}/income`, {
+    fetch(`${BASE_URL}/incomes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok ');
       }
-      return response.json();
+      return res.json();
     })
     .then(newIncome => {
       setIncomeData([...incomeData, newIncome]);

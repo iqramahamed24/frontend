@@ -3,6 +3,10 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SignIn from '../../auth/SIgnIn'; 
 import './Home.css'; 
+import Footer from '../../dashboard/Footer/Footer'
+
+
+
 
 function Home() {
   return (
@@ -21,6 +25,7 @@ function Home() {
           <div className="text-center">
             <SignIn/>
           </div>
+          <Footer/>
         </div>
       </div>
     </div>

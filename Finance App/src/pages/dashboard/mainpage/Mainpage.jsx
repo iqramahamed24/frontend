@@ -6,7 +6,7 @@ import { cilCreditCard, cilUser } from '@coreui/icons';
 import { Bar } from 'react-chartjs-2';
 import './Mainpage.css';
 
-function MainPage() {
+function Mainpage() {
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleToggleSidebar = () => {
@@ -146,4 +146,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default Mainpage;

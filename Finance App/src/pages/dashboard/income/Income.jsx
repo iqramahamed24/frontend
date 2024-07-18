@@ -4,39 +4,49 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Pie } from "react-chartjs-2";
 import { BASE_URL } from "../../../data/data";
 import IncomeTable from "./IncomeTable";
-import Chart from "chart.js/auto"; // Import Chart.js
+import Chart from "chart.js/auto";
 
 const Income = () => {
   const [incomeData, setIncomeData] = useState([]);
-  const chartRef = useRef(null); // Ref for the canvas element
-  const [chartInstance, setChartInstance] = useState(null); // State to hold the Chart.js instance
+  const chartRef = useRef(null);
+  const [chartInstance, setChartInstance] = useState(null);
 
   useEffect(() => {
-    // Fetch income data from API or database
-    fetch(`${BASE_URL}/income`)
+    fetch(`${BASE_URL}/incomes`)
       .then((res) => res.json())
       .then((data) => setIncomeData(data))
       .catch((error) => console.log(error));
-  }, []); // Run once on component mount
+  }, []);
+
+  const handleDelete = (id) => {
+    fetch(`${BASE_URL}/incomes/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok ");
+        }
+        setIncomeData((prevIncomeData) =>
+          prevIncomeData.filter((income) => income.id !== id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error deleting income:", error);
+      });
+  };
 
   useEffect(() => {
-    // Initialize or update the chart when incomeData changes
-    if (incomeData.length > 0 && chartRef.current) {
-      // Ensure the canvas element is available and incomeData is not empty
-      if (chartInstance) {
-        chartInstance.destroy(); // Destroy previous chart instance if it exists
-      }
-
-      const ctx = chartRef.current.getContext("2d"); // Get canvas context
+    if (incomeData.length > 0 && chartRef.current && !chartInstance) {
+      const ctx = chartRef.current.getContext("2d");
       const newChartInstance = new Chart(ctx, {
-        type: "pie", // Chart type (e.g., pie, bar, line)
+        type: "pie",
         data: {
           labels: incomeData.map((income) => income.source),
           datasets: [
             {
               label: "Income Sources",
               data: incomeData.map((income) => income.amount),
-              backgroundColor: ["#1d528b", "#3f85c7", "#7c97b1"], // Example colors
+              backgroundColor: ["#1d528b", "#3f85c7", "#7c97b1"],
               hoverOffset: 4,
             },
           ],
@@ -47,27 +57,15 @@ const Income = () => {
         },
       });
 
-      setChartInstance(newChartInstance); // Store the chart instance in state
+      setChartInstance(newChartInstance);
     }
-  }, [incomeData]); // Update when incomeData changes
 
-  const handleDelete = (id) => {
-    // Delete income item by ID
-    fetch(`${BASE_URL}/income/${id}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok " + response.statusText);
-        }
-        setIncomeData((prevIncomeData) =>
-          prevIncomeData.filter((income) => income.id !== id)
-        );
-      })
-      .catch((error) => {
-        console.error("Error deleting income:", error);
-      });
-  };
+    return () => {
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+    };
+  }, [incomeData, chartInstance]);
 
   return (
     <div>
