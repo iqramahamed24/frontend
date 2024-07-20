@@ -54,6 +54,7 @@ const IncomeTable = ({ incomeData, setIncomeData }) => {
     });
   };
 
+
   return (
     <div>
       <Button onClick={handleAddNewIncome} className="add-income-btn">

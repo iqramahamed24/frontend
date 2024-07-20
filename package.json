@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@coreui/icons-react": "^2.3.0",
     "bootstrap": "^5.3.3",
     "react-bootstrap": "^2.10.4",
     "react-router-dom": "^6.24.1"

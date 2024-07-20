@@ -1,149 +1,125 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import CIcon from '@coreui/icons-react';
-import { cilCreditCard, cilUser } from '@coreui/icons';
-import { Bar } from 'react-chartjs-2';
+import React from 'react';
 import './Mainpage.css';
+import { Line } from 'react-chartjs-2';
+import { NavLink } from 'react-router-dom'; // Import NavLink
+import SideBar from '../sideBar.jsx/SideBar';
+import BalanceIcon from '@mui/icons-material/AccountBalanceWallet';
+import IncomeIcon from '@mui/icons-material/AttachMoney';
+import ExpenseIcon from '@mui/icons-material/MonetizationOn';
+import BudgetIcon from '@mui/icons-material/TrendingUp';
 
-function Mainpage() {
-  const [showSidebar, setShowSidebar] = useState(false);
-
-  const handleToggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
-
-  const data = {
-    labels: ['Budget', 'Income', 'Expenses', 'Balance'],
+const Mainpage = ({ balance = 50000, income = 80000, expenses = 32000, budget = 40000 }) => {
+  const chartData = {
+    labels: ['January', 'February', 'March', 'April', 'May'],
     datasets: [
       {
-        label: 'Financial Overview',
-        data: [5000, 8500, 4000, 20000],
-        backgroundColor: ['#3f85c7', '#1d528b', '#7c97b1', '#4CAF50'],
-        hoverBackgroundColor: ['#255c91', '#143759', '#5c7696', '#3D8B37'],
+        label: 'Income',
+        data: [4000, 4500, 3000, 3500, 5000],
+        backgroundColor: 'rgba(0, 51, 102, 0.5)',
+        borderColor: '#003366',
+        borderWidth: 1,
+      },
+      {
+        label: 'Expenses',
+        data: [2000, 2500, 1500, 1800, 2200],
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: 'rgb(255, 99, 132)',
+        borderWidth: 1,
       },
     ],
   };
 
   const options = {
-    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => `Ksh ${context.raw}`,
+        },
+      },
+    },
     scales: {
       x: {
-        grid: {
-          display: false,
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 10,
         },
       },
       y: {
         beginAtZero: true,
-        grid: {
-          borderDash: [8, 4],
-        },
       },
     },
   };
 
   return (
-    <div className="main-page">
-      <div className="dashboard-header">
-        <Button className="toggle-button" onClick={handleToggleSidebar}>
-          <CIcon icon={cilUser} height={30} />
-        </Button>
-      </div>
-      <div className={`sidebar ${showSidebar ? 'show' : ''}`}>
-        <Card className="h-100">
-          <Card.Body>
-            <div className="sidebar-links">
-              <ul className="nav flex-column">
-                <li className="nav-item">
-                  <Link to="/expenses" className="nav-link">Expenses</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/budget" className="nav-link">Budget</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/income" className="nav-link">Income</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/contact" className="nav-link">Contact Us</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/aboutus" className="nav-link">About Us</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">Logout</Link>
-                </li>
-              </ul>
-            </div>
-            <Button className="toggle-button toggle-button-bottom" onClick={handleToggleSidebar}>
-              Close
-            </Button>
-          </Card.Body>
-        </Card>
-      </div>
+    <div className="mainpage-container">
+      <SideBar />
       <div className="main-content">
-        <Container fluid>
-          <Row>
-            <Col md={3} className={`sidebar-col ${showSidebar ? 'show' : ''}`}>
-              <Card className="h-100">
-                <Card.Body className="content-card">
-                  <h2>Financial Overview</h2>
-                  <Row className="mb-4">
-                    <Col>
-                      <Card className="content-card">
-                        <Card.Body>
-                          <CIcon icon={cilCreditCard} height={40} className="icon" />
-                          <h5>Expenses</h5>
-                          <Link to="/expenses" className="btn btn-primary mt-3">View Expenses</Link>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
-                  <Row className="mb-4">
-                    <Col>
-                      <Card className="content-card">
-                        <Card.Body>
-                          <h5>Budget</h5>
-                          <Link to="/budget" className="btn btn-primary mt-3">View Budget</Link>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
-                  <Row className="mb-4">
-                    <Col>
-                      <Card className="content-card">
-                        <Card.Body>
-                          <h5>Income</h5>
-                          <Link to="/income" className="btn btn-primary mt-3">View Income</Link>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Card className="content-card">
-                        <Card.Body>
-                          <h5>Balance</h5>
-                          <p>Current balance: KSH 5000</p>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={9} className={`main-col ${showSidebar ? 'collapsed' : ''}`}>
-              <Card className="h-100">
-                <Card.Body className="content-card">
-                  <h2>Financial Overview</h2>
-                  <Bar data={data} options={options} />
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+        <div className="info-container">
+          <div className="info-item balance">
+            <BalanceIcon className="icon" />
+            <h2>Balance</h2>
+            <p>Ksh {balance.toFixed(2)}</p>
+            <div className="tooltip">Your current balance</div>
+          </div>
+          <div className="info-item income">
+            <IncomeIcon className="icon" style={{ fontSize: '50px' }} />
+            <NavLink to="/income" className="info-link">
+              <h2>Income</h2>
+            </NavLink>
+            <p>Ksh {income.toFixed(2)}</p>
+            <div>Total income for the period</div>
+          </div>
+          <div className="info-item expenses">
+            <ExpenseIcon className="icon" style={{ fontSize: '50px' }} />
+            <NavLink to="/expenses" className="info-link">
+              <h2>Expenses</h2>
+            </NavLink>
+            <p>Ksh {expenses.toFixed(2)}</p>
+            <div>Total expenses for the period</div>
+          </div>
+          <div className="info-item budget">
+            <BudgetIcon className="icon" style={{ fontSize: '50px' }} />
+            <NavLink to="/budget" className="info-link">
+              <h2>Budget</h2>
+            </NavLink>
+            <p>Ksh {budget.toFixed(2)}</p>
+            <div>Your budget for the period</div>
+            <div className="progress-bar">
+              <span style={{ width: `${(expenses / budget) * 100}%` }}></span>
+            </div>
+          </div>
+        </div>
+        <div className="chart-container">
+          <h2>Income vs Expenses</h2>
+          <Line data={chartData} options={options} />
+        </div>
+        <div className="recent-transactions">
+          <h2>Recent Transactions</h2>
+          <ul>
+            <li>
+              <span className="transaction-description">Payment from client</span>
+              <span className="transaction-amount positive">Ksh 500</span>
+            </li>
+            <li>
+              <span className="transaction-description">Office supplies</span>
+              <span className="transaction-amount negative">Ksh -120</span>
+            </li>
+            <li>
+              <span className="transaction-description">Monthly rent</span>
+              <span className="transaction-amount negative">Ksh -1500</span>
+            </li>
+            <li>
+              <span className="transaction-description">Payment from client</span>
+              <span className="transaction-amount positive">Ksh 500</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Mainpage;

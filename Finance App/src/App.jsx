@@ -10,12 +10,13 @@ import Mainpage from "./pages/dashboard/mainpage/Mainpage";
 import './index.css'
 
 
-
 function App() {
 
   return (
     <>
+   
     <Router>
+    
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/mainpage" element={<Mainpage />} />
@@ -25,6 +26,8 @@ function App() {
       <Route path="/logout" element={<LogOut />} />
       <Route path="/signup" element={<SignUp/>}/>
     </Routes>
+    
+  
   </Router>
   </>
     

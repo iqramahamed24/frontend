@@ -25,7 +25,6 @@ function Home() {
           <div className="text-center">
             <SignIn/>
           </div>
-          <Footer/>
         </div>
       </div>
     </div>
