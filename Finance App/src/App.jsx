@@ -7,6 +7,7 @@ import Expenses from "./pages/dashboard/expenses/Expenses";
 import LogOut from "./Components/LogOut";
 import SignUp from "./pages/auth/Signup";
 import Mainpage from "./pages/dashboard/mainpage/Mainpage";
+import ContactUs from "./pages/dashboard/contactUs/ContactUs";
 import './index.css'
 
 
@@ -25,6 +26,8 @@ function App() {
       <Route path="/income" element={<Income />} />
       <Route path="/logout" element={<LogOut />} />
       <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/contact" element={<ContactUs/>}/>
+
     </Routes>
     
   

@@ -43,8 +43,20 @@
   .budget-form{
     margin-bottom: 20px;
     margin-left: 210px;
+    margin-right: 210px;
     padding: 15px;
     justify-content: center;
     align-items: center;
     margin-top: 20px 0;
+    background-color: #2e66a1;
+
   }
+  .Nav{
+    text-align: center;
+  }
+  
+  .Nav h1 {
+    font-weight: bold;
+    color: white; 
+  }
+  
