@@ -1,80 +1,92 @@
 body {
-  background-size: cover;
-  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #18285e;
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
 }
 
 .expenses-container {
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 20px;
-  background: #161b1f;
-  box-shadow: 0 4px 8px rgba(146, 31, 31, 0.1);
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #a3aec2 !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
-h1 {
-  font-size: 60px;
-  margin-bottom: 15px;
-  color: white;
+.total-expense {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.total-expense {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: white;
+.total-amount {
+  color: #2d74c4;
+  font-weight: bold;
 }
 
 .expense-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  padding: 20px;
+  gap: 1rem;
 }
 
-.expense-form input,
-.expense-form select {
-  margin-bottom: 10px;
-  padding: 10px;
+.input-field {
+  padding: 0.75rem;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 4px;
+  font-size: 1rem;
   width: 100%;
 }
 
-.expense-form button {
-  padding: 20px;
+.submit-button {
+  padding: 0.75rem;
   border: none;
-  border-radius: 5px;
-  background: #1e147a;
-  color: white;
-  font-size: 16px;
+  border-radius: 4px;
+  background-color: #2d74c4 ;
+  color: #1c396e;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #1e5f9f;
+}
+
+.expenses-table-container {
+  margin-top: 2rem;
+}
+
+table {
   width: 100%;
+  border-collapse: collapse;
 }
 
-.expense-form button:hover {
-  background: #ff5a4c;
+thead {
+  background-color: #2d74c4;
+  color: #ffffff;
 }
 
-.expense-list {
-  margin-top: 20px;
-  color: white;
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
-.expense-list ul {
-  list-style-type: none;
-  padding: 0;
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-.expense-list li {
-  background: #ffffff10; 
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+tbody tr:hover {
+  background-color: #f1f1f1;
 }

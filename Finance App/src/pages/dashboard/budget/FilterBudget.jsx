@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './Budget.css'
+import React, { useState } from "react";
+import "./Budget.css";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -20,10 +20,9 @@ const SearchBar = ({ onSearch }) => {
         value={searchTerm}
         onChange={handleChange}
       />
-<button onClick={handleClick} style={{ backgroundImage: `url(https://cdn.vectorstock.com/i/1000x1000/66/76/magnifying-glass-search-icon-vector-6096676.webp)`, backgroundRepeat: 'no-repeat', backgroundSize: 'contain', width: '30px', height: '30px' }}></button>
+      <button onClick={handleClick}></button>
     </div>
   );
 };
 
 export default SearchBar;
-

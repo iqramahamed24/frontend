@@ -3,7 +3,6 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SignIn from '../../auth/SIgnIn'; 
 import './Home.css'; 
-import Footer from '../../dashboard/Footer/Footer'
 
 
 

@@ -105,7 +105,10 @@ const Income = () => {
       <div className="chart-label">Income Chart</div>
       <div className=" mt-5">
         <div className="pie-chart mt-3">
-          <Pie data={chartData} options={{ responsive: true, maintainAspectRatio: false }} />
+          <Pie
+            data={chartData}
+            options={{ responsive: true, maintainAspectRatio: false }}
+          />
         </div>
       </div>
     </div>

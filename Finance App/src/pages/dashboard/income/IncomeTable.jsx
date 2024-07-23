@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Modal, Form, Button } from 'react-bootstrap';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import './Income.css';
-import { BASE_URL } from '../../../data/data'; 
+import React, { useState } from "react";
+import { Modal, Form, Button } from "react-bootstrap";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import "./Income.css";
+import { BASE_URL } from "../../../data/data";
 
 const IncomeTable = ({ incomeData, setIncomeData }) => {
   const [showModal, setShowModal] = useState(false);
@@ -32,28 +32,27 @@ const IncomeTable = ({ incomeData, setIncomeData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetch(`${BASE_URL}/incomes`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
-    .then(res => {
-      if (!res.ok) {
-        throw new Error('Network response was not ok ');
-      }
-      return res.json();
-    })
-    .then(newIncome => {
-      setIncomeData([...incomeData, newIncome]);
-      setShowModal(false);
-      setFormData({ source: "", amount: "", date: "" });
-    })
-    .catch(error => {
-      console.error('Error adding income:', error);
-    });
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok ");
+        }
+        return res.json();
+      })
+      .then((newIncome) => {
+        setIncomeData([...incomeData, newIncome]);
+        setShowModal(false);
+        setFormData({ source: "", amount: "", date: "" });
+      })
+      .catch((error) => {
+        console.error("Error adding income:", error);
+      });
   };
-
 
   return (
     <div>

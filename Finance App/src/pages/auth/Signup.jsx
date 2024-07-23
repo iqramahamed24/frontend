@@ -1,28 +1,32 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
-import { BASE_URL } from '../../data/data';
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BASE_URL } from "../../data/data";
 
 function SignUp() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match", {
+        className: "custom-toast-error",
+      });
       return;
     }
 
     try {
       const response = await fetch(`${BASE_URL}/register`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           user_name: name,
@@ -33,17 +37,20 @@ function SignUp() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Network response was not ok');
+        throw new Error(errorData.message || "Network response was not ok");
       }
 
-      alert('Account created successfully');
-      navigate('/');
-
+      toast.success("Account created successfully", {
+        className: "custom-toast-success",
+      });
+      navigate("/");
     } catch (error) {
-      console.error('Error registering user:', error);
-      alert(`Failed to register user: ${error.message}`);
+      console.error("Error registering user:", error);
+      toast.error(`Failed to register user: ${error.message}`, {
+        className: "custom-toast-error",
+      });
     }
-  }
+  };
 
   return (
     <section className="homepage-container">
@@ -90,7 +97,7 @@ function SignUp() {
                 required
               />
             </Form.Group>
-            <Button type='submit' className='btn btn-primary w-100'>
+            <Button type="submit" className="btn btn-primary w-100">
               Sign Up
             </Button>
             <NavLink to="/" className="btn btn-link d-block mt-3">
@@ -99,6 +106,7 @@ function SignUp() {
           </Form>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 }

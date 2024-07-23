@@ -5,7 +5,7 @@
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-left: 220px; /* Adjust based on sidebar width */
+  margin-left: 220px;
 }
 
 .info-container {
@@ -19,8 +19,8 @@
   border-radius: 8px;
   padding: 20px;
   width: 23%;
-  position: relative; /* Ensure that tooltip is positioned relative to this container */
-  overflow: hidden; /* Ensure that the tooltip does not overflow */
+  position: relative; 
+  overflow: hidden; 
 }
 
 
@@ -35,20 +35,20 @@
 }
 
 .tooltip {
-  display: block; /* Make sure it's set to block or inline-block */
-  position: absolute; /* Position it absolutely to control its placement */
-  background-color: #333; /* Dark background for better visibility */
-  color: #fff; /* White text color */
-  padding: 5px; /* Add some padding */
-  border-radius: 4px; /* Rounded corners */
-  font-size: 12px; /* Adjust the font size */
-  white-space: nowrap; /* Prevent the text from wrapping */
-  z-index: 1000; /* Ensure it appears above other elements */
-  visibility: hidden; /* Hide it by default */
+  display: block; 
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px; 
+  border-radius: 4px; 
+  font-size: 12px;
+  white-space: nowrap; 
+  z-index: 1000; 
+  visibility: hidden; 
 }
 
 .info-item:hover .tooltip {
-  visibility: visible; /* Show it on hover */
+  visibility: visible;
 }
 
 
@@ -69,12 +69,12 @@
 
 .chart-container {
   margin-top: 40px;
-  background-color: #ffffff; /* White background for chart container */
-  border: 1px solid #ddd; /* Light border for separation */
+  background-color: #ffffff; 
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   width: 100%;
-  max-width: 600px; /* Adjust as needed to make the chart smaller */
+  max-width: 600px; 
 }
 
 .recent-transactions {
@@ -84,7 +84,7 @@
 .recent-transactions h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  color: #003366; /* Dark blue for better contrast */
+  color: #003366; 
 }
 
 .recent-transactions ul {
@@ -104,12 +104,12 @@
 }
 
 .recent-transactions li:hover {
-  background-color: #e0f7fa; /* Light blue on hover */
+  background-color: #e0f7fa; 
 }
 
 .transaction-description {
   flex: 1;
-  color: #333; /* Darker text for better readability */
+  color: #333;
 }
 
 .transaction-amount {
@@ -125,11 +125,11 @@
 }
 
 
-.
-/* Responsive Design */
+
+
 @media (max-width: 768px) {
   .main-content {
-    margin-left: 0; /* Remove sidebar margin on small screens */
+    margin-left: 0; 
   }
 
   .info-container {

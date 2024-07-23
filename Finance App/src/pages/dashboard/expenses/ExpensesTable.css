@@ -1,6 +1,3 @@
-ExpensesTable.css
-
-/* General table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -8,7 +5,6 @@ table {
     font-family: Arial, sans-serif;
 }
 
-/* Styling for the table header */
 table thead {
     background-color: #007bff;
     color: white;
@@ -21,107 +17,31 @@ table td {
     text-align: left;
 }
 
-/* Alternating row colors for better readability */
 table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Hover effect for table rows */
-table tbody tr:hover {
-    background-color: #e9ecef;
-}
 
-/* Specific column styling */
-table th:nth-child(2),
-table td:nth-child(2) {
-    text-align: right; /* Right-align the amount column */
-}
-
-table th:nth-child(3),
-table td:nth-child(3) {
-    text-align: center; /* Center-align the date column */
-}
-
-
-/* alternative css */
-body {
-    background-size: cover;
-    background-position: center;
-    margin: 100;
-    font-family: Arial, sans-serif;
-  }
-  
-  .expenses-container {
-    max-width: 600px;
+table {
     width: 100%;
-    margin: 0 auto;
-    padding: 10px;
-    border-radius: 20px;
-    background: #161b1f;
-    box-shadow: 0 4px 8px rgba(146, 31, 31, 0.1);
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 60px;
-    margin-bottom: 15px;
-    color: rgb(36, 32, 32);
-  }
-  
-  .total-expense {
-    font-size: 40px;
-    margin-bottom: 20px;
-    color: rgb(20, 47, 70);
-  }
-  
-  .expense-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    padding: 20px;
-  }
-  
-  .expense-form input,
-  .expense-form select {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-  }
-  
-  .expense-form button {
-    padding: 20px;
-    border: none;
-    border-radius: 5px;
-    background: #1e147a;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    width: 100%;
-  }
-  
-  .expense-form button:hover {
-    background: #ff5a4c;
-  }
-  
-  .expense-list {
+    border-collapse: collapse;
     margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+table thead {
+    background-color: #007bff;
     color: white;
-  }
-  
-  .expense-list ul {
-    list-style-type: none;
-    padding: 10;
-  }
-  
-  .expense-list li {
-    background: #ffffff10; 
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-  
+}
+
+table th,
+table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #b7c5d3;
+}
+

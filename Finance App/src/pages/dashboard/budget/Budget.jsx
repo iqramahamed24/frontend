@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BudgetTable from './BudgetTable';
 import BudgetForm from './BudgetForm';
 import SearchBar from './FilterBudget';
 import NavBar from './NavBar';
-import './Budget.css'
+import { BASE_URL } from '../../../data/data';
+import './Budget.css';
 
 const Budget = () => {
   const [budgets, setBudgets] = useState([]);
   const [filteredBudgets, setFilteredBudgets] = useState([]);
 
+  useEffect(() => {
+    fetch(`${BASE_URL}/budgets`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBudgets(data);
+        setFilteredBudgets(data); 
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   const handleAddBudget = (newBudget) => {
-    setBudgets([...budgets, newBudget]);
-    setFilteredBudgets([...filteredBudgets, newBudget]); 
+    setBudgets((prevBudgets) => [...prevBudgets, newBudget]);
+    setFilteredBudgets((prevFilteredBudgets) => [...prevFilteredBudgets, newBudget]);
   };
 
   const handleSearch = (searchTerm) => {
@@ -25,7 +36,7 @@ const Budget = () => {
     <div className="App">
       <NavBar />
       <div className="budget-form">
-        <BudgetForm onSubmit={handleAddBudget} budgets={budgets} />
+        <BudgetForm onSubmit={handleAddBudget} />
       </div>
       <div className="search-bar">
         <SearchBar onSearch={handleSearch} />
@@ -38,5 +49,3 @@ const Budget = () => {
 };
 
 export default Budget;
-
-
