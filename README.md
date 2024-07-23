@@ -1,6 +1,8 @@
 Finance Tracker: A Comprehensive Personal Finance Management Application
 Project Overview
 
+Live link - https://turbo-waddle-iota.vercel.app/
+
 The Finance Tracker application is designed to help users manage their finances efficiently. This web-based application provides features for tracking expenses, managing incomes, setting budgets, and achieving financial goals. Leveraging modern technologies, the application uses React for the front end and Flask for the back end, with JWT-based authentication to ensure secure access to user data.
 Project Objectives
 
